@@ -1,0 +1,125 @@
+/* ===========================================
+   BACKGROUND.CSS
+   Layering for the PCB canvas + ambient glow.
+   The canvas (engine/background.js) owns the
+   traces/pads/pulses; this file only supplies
+   the soft ambient embers around it and the
+   subtle print texture.
+=========================================== */
+
+html, body {
+    background: var(--bg, #050505);
+}
+
+body {
+    position: relative;
+}
+
+/* PCB canvas -- fixed, full-viewport, behind everything */
+
+#bg-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-bg, -10);
+    pointer-events: none;
+}
+
+/* Ambient top-left ember */
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -260px;
+    left: -260px;
+    width: 720px;
+    height: 720px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(109, 74, 255, .12), transparent 70%);
+    filter: blur(100px);
+    z-index: -9;
+    pointer-events: none;
+}
+
+/* Ambient bottom-right ember */
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: -280px;
+    right: -280px;
+    width: 720px;
+    height: 720px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 92, 246, .10), transparent 70%);
+    filter: blur(110px);
+    z-index: -9;
+    pointer-events: none;
+}
+
+/* Fine print-texture grain, sits above the canvas */
+
+.noise {
+    position: fixed;
+    inset: 0;
+    opacity: .025;
+    pointer-events: none;
+    z-index: -8;
+    background-image: radial-gradient(#ffffff 1px, transparent 0);
+    background-size: 6px 6px;
+}
+
+/* Hero gets its own subtle schematic grid + glow on top of the canvas */
+
+.hero {
+    isolation: isolate;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255, 255, 255, .015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .015) 1px, transparent 1px);
+    background-size: 70px 70px;
+    opacity: .22;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    right: -160px;
+    top: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(109, 74, 255, .12), transparent 70%);
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+
+    body::before,
+    body::after {
+        display: none;
+    }
+
+    .hero::after {
+        display: none;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    #bg-canvas {
+        opacity: .6;
+    }
+
+}

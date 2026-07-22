@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Shaik Faisel | Software Developer</title>
+
+<meta name="description"
+content="Shaik Faisel — Electronics &amp; Communication Engineer, Full-Stack Developer, VLSI &amp; PCB Engineer, IoT/Embedded Systems and AI/ML Developer.">
+
+<link rel="icon"
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Ctext x='23' y='44' font-family='Arial,Helvetica,sans-serif' font-size='32' font-weight='800' fill='%23FFFFFF' text-anchor='middle'%3ES%3C/text%3E%3Ctext x='42' y='44' font-family='Arial,Helvetica,sans-serif' font-size='32' font-weight='800' fill='%238B5CF6' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+
+<!-- Google Font -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<!-- Remix Icons -->
+
+<link
+href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+rel="stylesheet">
+
+<!-- CSS -->
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/variables.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/styles.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/background.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/navbar.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/hero.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/about.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/skills.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/project.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/awards.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/contact.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/footer.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/kyro.css') }}">
+
+</head>
+
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<div class="noise" aria-hidden="true"></div>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+<div class="container nav-container">
+
+<a href="#home" class="logo">
+
+S<span>F</span>
+
+</a>
+
+<nav>
+
+<ul class="nav-menu">
+
+<li><a href="#home">Home</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#skills">Skills</a></li>
+
+<li><a href="#projects">Projects</a></li>
+
+<li><a href="#award">Award</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<button class="menu-btn" aria-label="Toggle navigation menu">
+
+<i class="ri-menu-3-line"></i>
+
+</button>
+
+</div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+<div class="container hero-container">
+
+<div class="hero-left">
+
+<div class="hero-badge">
+
+<i class="ri-flashlight-fill"></i>
+
+AVAILABLE FOR WORK
+
+</div>
+
+<h3>
+
+Hello I'm
+
+</h3>
+
+<h1>
+
+Shaik
+
+<span>
+
+Faisel
+
+</span>
+
+</h1>
+
+<h2>
+
+<span id="typing-text"></span>
+
+</h2>
+
+<p>
+
+Electronics &amp; Communication Engineer working across Full-Stack
+Development, VLSI &amp; PCB Design, IoT/Embedded Systems and
+Artificial Intelligence.
+
+I build fast, beautiful and intelligent digital products —
+from silicon to software.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="{{ url_for('static', filename='resume.pdf') }}"
+target="_blank"
+class="btn-primary">
+
+Resume
+
+</a>
+
+<a href="#contact"
+
+class="btn-secondary">
+
+Let's Talk
+
+</a>
+
+</div>
+
+<div class="hero-social">
+
+<a href="https://github.com/Shaikfaisel" target="_blank" aria-label="GitHub">
+
+<i class="ri-github-fill"></i>
+
+</a>
+
+<a href="https://www.linkedin.com/in/shaik-faisel565-linkedi/" target="_blank" aria-label="LinkedIn">
+
+<i class="ri-linkedin-box-fill"></i>
+
+</a>
+
+<a href="https://leetcode.com/5r7qyM5OfQ" target="_blank" aria-label="LeetCode">
+
+<i class="ri-code-box-fill"></i>
+
+</a>
+
+<a href="mailto:shaikfaisel129@gmail.com" aria-label="Email">
+
+<i class="ri-mail-fill"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="profile-card">
+
+<img
+
+src="{{ url_for('static', filename='images/profile.jpg') }}"
+
+alt="Shaik Faisel">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="scroll-indicator">
+
+<span>SCROLL</span>
+
+<i class="ri-arrow-down-line"></i>
+
+</div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="about">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>ABOUT ME</span>
+
+            <h2>Engineering Meets Intelligent Software</h2>
+
+            <p>
+                I enjoy building software that combines electronics,
+                artificial intelligence and modern web technologies
+                to solve real-world problems.
+            </p>
+
+        </div>
+
+        <div class="about-grid">
+
+            <!-- Left Card -->
+
+            <div class="about-card large">
+
+                <div class="card-header">
+
+                    <h3>
+
+                        <i class="ri-user-3-fill"></i>
+
+                        Who I Am
+
+                    </h3>
+
+                </div>
+
+                <p>
+
+                    I'm Shaik Faisel, an Electronics &amp;
+                    Communication Engineering graduate with
+                    strong hands-on experience across Full-Stack
+                    Development, VLSI &amp; PCB Design, IoT/Embedded
+                    Systems, Artificial Intelligence and Machine
+                    Learning.
+
+                </p>
+
+                <p>
+
+                    I love building applications and hardware that
+                    are fast, clean, visually attractive and useful
+                    for solving practical engineering problems.
+
+                </p>
+
+            </div>
+
+            <!-- Right Top -->
+
+            <div class="about-card">
+
+                <div class="card-header">
+
+                    <i class="ri-graduation-cap-fill"></i>
+
+                    <h3>Education</h3>
+
+                </div>
+
+                <h4>
+
+                    B.E.
+
+                    Electronics &amp; Communication Engineering
+
+                </h4>
+
+                <span>
+
+                    2025 Graduate
+
+                </span>
+
+            </div>
+
+            <!-- Right Bottom -->
+
+            <div class="about-card">
+
+                <div class="card-header">
+
+                    <i class="ri-award-fill"></i>
+
+                    <h3>
+
+                        Achievement
+
+                    </h3>
+
+                </div>
+
+                <h4>
+
+                    Best Major Project Award
+
+                </h4>
+
+                <span>
+
+                    Karnataka State Council
+                    for Science &amp; Technology
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Stats -->
+
+        <div class="stats-grid">
+
+            <div class="stat-box">
+
+                <h2>
+
+                    10+
+
+                </h2>
+
+                <span>
+
+                    Technologies
+
+                </span>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h2>
+
+                    5+
+
+                </h2>
+
+                <span>
+
+                    Projects
+
+                </span>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h2>
+
+                    92%
+
+                </h2>
+
+                <span>
+
+                    ML Accuracy
+
+                </span>
+
+            </div>
+
+            <div class="stat-box">
+
+                <h2>
+
+                    100%
+
+                </h2>
+
+                <span>
+
+                    Passion
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills" class="skills">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>TECH STACK</span>
+
+            <h2>Technologies I Work With</h2>
+
+            <p>
+                A combination of software engineering, artificial intelligence,
+                embedded systems and modern web development.
+            </p>
+
+        </div>
+
+        <div class="skills-grid">
+
+            <!-- Programming -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    <i class="ri-code-s-slash-line"></i>
+                </div>
+
+                <h3>Programming</h3>
+
+                <div class="skill-tags">
+
+                    <span>Python</span>
+                    <span>C</span>
+                    <span>C++</span>
+                    <span>JavaScript</span>
+
+                </div>
+
+            </div>
+
+            <!-- AI -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    <i class="ri-robot-2-line"></i>
+                </div>
+
+                <h3>Artificial Intelligence</h3>
+
+                <div class="skill-tags">
+
+                    <span>Machine Learning</span>
+                    <span>TensorFlow</span>
+                    <span>OpenCV</span>
+                    <span>Firebase</span>
+
+                </div>
+
+            </div>
+
+            <!-- Web -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    <i class="ri-window-line"></i>
+                </div>
+
+                <h3>Web Development</h3>
+
+                <div class="skill-tags">
+
+                    <span>Flask</span>
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>Bootstrap</span>
+
+                </div>
+
+            </div>
+
+            <!-- Database -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    <i class="ri-database-2-line"></i>
+                </div>
+
+                <h3>Database</h3>
+
+                <div class="skill-tags">
+
+                    <span>MySQL</span>
+                    <span>SQLite</span>
+                    <span>Firebase</span>
+
+                </div>
+
+            </div>
+
+            <!-- Embedded -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    <i class="ri-cpu-line"></i>
+                </div>
+
+                <h3>Embedded Systems</h3>
+
+                <div class="skill-tags">
+
+                    <span>Arduino</span>
+                    <span>8051</span>
+                    <span>Embedded C</span>
+                    <span>IoT</span>
+
+                </div>
+
+            </div>
+
+            <!-- Tools -->
+
+            <div class="skill-card">
+
+                <div class="skill-icon">
+                    <i class="ri-tools-line"></i>
+                </div>
+
+                <h3>Tools</h3>
+
+                <div class="skill-tags">
+
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>VS Code</span>
+                    <span>Linux</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects" class="projects">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>FEATURED PROJECTS</span>
+
+            <h2>Things I've Built</h2>
+
+            <p>
+
+                A collection of projects demonstrating Artificial Intelligence,
+                Machine Learning, Full Stack Development and Embedded Systems.
+
+            </p>
+
+        </div>
+
+        <!-- ================= PROJECT 1 ================= -->
+
+        <div class="project-card">
+
+            <div class="project-image">
+
+                <img src="{{ url_for('static', filename='project-images/bci-project.jpg') }}"
+                     alt="Brain Computer Interface project screenshot" loading="lazy">
+
+            </div>
+
+            <div class="project-info">
+
+                <span class="project-type">
+
+                    AI • Machine Learning
+
+                </span>
+
+                <h3>
+
+                    Early Stage Neurological Disorder Detection
+
+                </h3>
+
+                <p>
+
+                    Developed an intelligent Brain Computer Interface (BCI)
+                    application capable of detecting neurological disorders
+                    using EEG signal processing and Machine Learning,
+                    achieving high prediction accuracy.
+
+                </p>
+
+                <div class="project-tech">
+
+                    <span>Python</span>
+
+                    <span>Machine Learning</span>
+
+                    <span>TensorFlow</span>
+
+                    <span>Firebase</span>
+
+                </div>
+
+                <button type="button" class="project-detail-toggle" aria-expanded="false">
+                    <span class="toggle-label">View details</span>
+                    <i class="ri-arrow-down-s-line"></i>
+                </button>
+
+                <div class="project-details">
+                    <div class="project-details-inner">
+
+                        <div class="metric-grid">
+                            <div class="metric"><strong>92%</strong><span>Model Accuracy</span></div>
+                            <div class="metric"><strong>3</strong><span>EEG Channels</span></div>
+                            <div class="metric"><strong>1st</strong><span>KSCST Award</span></div>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4><i class="ri-error-warning-line"></i> Problem</h4>
+                            <p>Early-stage neurological disorders are hard to detect without
+                            expensive, specialist equipment and long diagnostic queues, delaying
+                            treatment when early intervention matters most.</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4><i class="ri-lightbulb-line"></i> Solution</h4>
+                            <p>Built a BCI pipeline that processes EEG signals and classifies
+                            early markers of neurological disorders using a trained Machine
+                            Learning model, giving a fast, low-cost screening signal.</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4><i class="ri-user-star-line"></i> My Contribution</h4>
+                            <p>Designed the signal-processing pipeline, trained and tuned the
+                            ML model, and built the application layer end-to-end. This project
+                            received the Best Major Project Award from KSCST.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="project-links">
+
+                    <a href="https://github.com/Shaikfaisel/BCI-Epilepsy-Monitoring-System"
+                       target="_blank"
+                       rel="noopener"
+                       class="btn-secondary">
+
+                        <i class="ri-github-fill"></i>
+                        GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PROJECT 2 ================= -->
+
+        <div class="project-card reverse">
+
+            <div class="project-image">
+
+                <img src="{{ url_for('static', filename='project-images/online-voting.jpg') }}"
+                     alt="Smart Online Voting System screenshot" loading="lazy">
+
+            </div>
+
+            <div class="project-info">
+
+                <span class="project-type">
+
+                    Full Stack • AI
+
+                </span>
+
+                <h3>
+
+                    Smart Online Voting System
+
+                </h3>
+
+                <p>
+
+                    Secure online voting platform integrating facial
+                    recognition, Flask backend and MySQL database to
+                    provide authentication, transparency and efficient
+                    election management.
+
+                </p>
+
+                <div class="project-tech">
+
+                    <span>Flask</span>
+
+                    <span>OpenCV</span>
+
+                    <span>MySQL</span>
+
+                    <span>JavaScript</span>
+
+                </div>
+
+                <button type="button" class="project-detail-toggle" aria-expanded="false">
+                    <span class="toggle-label">View details</span>
+                    <i class="ri-arrow-down-s-line"></i>
+                </button>
+
+                <div class="project-details">
+                    <div class="project-details-inner">
+
+                        <div class="metric-grid">
+                            <div class="metric"><strong>Face ID</strong><span>Authentication</span></div>
+                            <div class="metric"><strong>MySQL</strong><span>Vote Storage</span></div>
+                            <div class="metric"><strong>Real-time</strong><span>Result Tally</span></div>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4><i class="ri-error-warning-line"></i> Problem</h4>
+                            <p>Traditional voting processes are slow to tally and vulnerable to
+                            impersonation, while many existing online voting tools lack strong
+                            identity verification.</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4><i class="ri-lightbulb-line"></i> Solution</h4>
+                            <p>Built a Flask-based platform with OpenCV facial recognition for
+                            voter authentication, backed by a MySQL database for tamper-resistant
+                            vote storage and transparent result reporting.</p>
+                        </div>
+
+                        <div class="detail-block">
+                            <h4><i class="ri-user-star-line"></i> My Contribution</h4>
+                            <p>Built the full stack: Flask backend, MySQL schema, the OpenCV
+                            facial-recognition authentication flow, and the front-end voting
+                            and results interface.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="project-links">
+
+                    <a href="https://github.com/Shaikfaisel/Online_Voting_System"
+                       target="_blank"
+                       rel="noopener"
+                       class="btn-secondary">
+
+                        <i class="ri-github-fill"></i>
+                        GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= AWARDS ================= -->
+
+<section id="award" class="awards">
+
+    <div class="container">
+
+        <div class="award-banner">
+
+            <div class="award-icon">
+
+                <i class="ri-trophy-fill"></i>
+
+            </div>
+
+            <div class="award-content">
+
+                <span class="award-tag">
+
+                    ACHIEVEMENT
+
+                </span>
+
+                <h2>
+
+                    Best Major Project Award 🏆
+
+                </h2>
+
+                <p>
+
+                    Received the <strong>Best Major Project Award</strong> from the
+                    Karnataka State Council for Science &amp; Technology (KSCST)
+                    for developing an AI-powered Brain Computer Interface system
+                    for Early Stage Neurological Disorder Detection.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>CONTACT</span>
+
+<h2>Let's Build Something Amazing</h2>
+
+<p>
+
+Open to Software Engineering, AI/ML, Embedded Systems, VLSI/PCB and
+Full Stack opportunities.
+
+</p>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-left">
+
+<div class="contact-card">
+
+<i class="ri-mail-fill"></i>
+
+<div>
+
+<h3>Email</h3>
+
+<p>shaikfaisel129@gmail.com</p>
+
+</div>
+
+</div>
+
+<div class="contact-card">
+
+<i class="ri-phone-fill"></i>
+
+<div>
+
+<h3>Phone</h3>
+
+<p>+91 82173 10699</p>
+
+</div>
+
+</div>
+
+<div class="contact-card">
+
+<i class="ri-map-pin-fill"></i>
+
+<div>
+
+<h3>Location</h3>
+
+<p>India</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="contact-right">
+
+<form id="contact-form" novalidate>
+
+<div class="form-row">
+
+<input type="text" name="from_name"
+placeholder="Your Name" required>
+
+<input type="email" name="reply_to"
+placeholder="Your Email" required>
+
+</div>
+
+<input type="text" name="subject"
+placeholder="Subject" required>
+
+<textarea name="message"
+placeholder="Your Message" required></textarea>
+
+<button type="submit"
+class="btn-primary">
+
+Send Message
+
+</button>
+
+<p id="form-status"></p>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-top">
+
+<h2>
+
+Shaik <span>Faisel</span>
+
+</h2>
+
+<p>
+
+Electronics Engineer • Software Developer
+
+</p>
+
+<div class="footer-social">
+
+<a href="https://github.com/Shaikfaisel" target="_blank" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+
+<a href="https://www.linkedin.com/in/shaik-faisel565-linkedi/" target="_blank" aria-label="LinkedIn"><i class="ri-linkedin-box-fill"></i></a>
+
+<a href="https://leetcode.com/5r7qyM5OfQ" target="_blank" aria-label="LeetCode"><i class="ri-code-box-fill"></i></a>
+
+<a href="mailto:shaikfaisel129@gmail.com" aria-label="Email"><i class="ri-mail-fill"></i></a>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2025 Shaik Faisel Ahmed •
+
+Built with Flask &amp; ❤️
+
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- Back To Top -->
+
+<button id="backToTop" aria-label="Back to top">
+
+<i class="ri-arrow-up-line"></i>
+
+</button>
+
+<!-- ================= KYRO ASSISTANT ================= -->
+
+<div id="kyro">
+
+<button class="kyro-launcher" aria-label="Open KYRO, the portfolio assistant">
+    <span class="kyro-launcher-icon">🤖</span>
+    <span class="kyro-ping" aria-hidden="true"></span>
+</button>
+
+<div class="kyro-window" role="dialog" aria-label="KYRO portfolio assistant">
+
+    <div class="kyro-header">
+
+        <div class="kyro-header-info">
+            <span class="kyro-avatar">🤖</span>
+            <div>
+                <h3>KYRO</h3>
+                <span class="kyro-status"><i class="kyro-dot"></i> Online</span>
+            </div>
+        </div>
+
+        <button class="kyro-close" aria-label="Close assistant">
+            <i class="ri-close-line"></i>
+        </button>
+
+    </div>
+
+    <div class="kyro-messages" id="kyro-messages"></div>
+
+    <div class="kyro-quick-replies" id="kyro-quick-replies"></div>
+
+    <form class="kyro-input-row" id="kyro-form">
+        <input type="text" id="kyro-input" placeholder="Ask about skills, projects..." autocomplete="off">
+        <button type="submit" aria-label="Send message"><i class="ri-send-plane-fill"></i></button>
+    </form>
+
+</div>
+
+</div>
+
+<!-- JS -->
+
+<script src="{{ url_for('static', filename='js/engine/typing.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/engine/mouse.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/engine/background.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/kyro.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

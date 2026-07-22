@@ -1,0 +1,160 @@
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1280px, 94%);
+    z-index: var(--z-navbar, 1000);
+    transition: top var(--dur-base, .4s) var(--ease-out, ease);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-radius: var(--radius-lg, 20px);
+    background: rgba(13, 13, 18, .65);
+    backdrop-filter: blur(var(--glass-blur-strong, 20px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong, 20px));
+    border: 1px solid rgba(139, 92, 246, .12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+    transition: padding var(--dur-base, .4s) ease,
+                background var(--dur-base, .4s) ease,
+                border-color var(--dur-base, .4s) ease;
+}
+
+/* ==========================================
+   SCROLLED NAVBAR
+========================================== */
+
+.navbar.scrolled {
+    top: 10px;
+}
+
+.navbar.scrolled .nav-container {
+    padding: 12px 28px;
+    background: rgba(10, 10, 15, .92);
+    border-color: rgba(139, 92, 246, .22);
+}
+
+/* ==========================================
+   LOGO
+========================================== */
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.logo span {
+    color: var(--accent, #8B5CF6);
+}
+
+/* ==========================================
+   MENU
+========================================== */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+}
+
+.nav-menu a {
+    position: relative;
+    color: #d7d7df;
+    font-weight: 500;
+    transition: color var(--dur-fast, .3s) ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #ffffff;
+}
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: var(--accent, #8B5CF6);
+    border-radius: 20px;
+    transition: width var(--dur-base, .35s) ease;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+/* ==========================================
+   MENU BUTTON
+========================================== */
+
+.menu-btn {
+    display: none;
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: var(--radius-md, 12px);
+    background: #17171c;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background var(--dur-fast, .3s) ease;
+}
+
+.menu-btn:hover {
+    background: #262633;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .nav-menu {
+        position: fixed;
+        top: 85px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        width: 94%;
+        padding: 30px;
+        border-radius: var(--radius-lg, 22px);
+        background: #111114;
+        border: 1px solid rgba(139, 92, 246, .12);
+        backdrop-filter: blur(20px);
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--dur-base, .35s) ease,
+                    transform var(--dur-base, .35s) ease,
+                    visibility var(--dur-base, .35s) ease;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .menu-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

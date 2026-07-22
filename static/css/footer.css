@@ -1,0 +1,92 @@
+/* ===========================================
+   FOOTER
+   Matches: .footer > .footer-top (h2, p, .footer-social),
+   .footer-bottom
+=========================================== */
+
+.footer {
+    background: #050505;
+    border-top: 1px solid var(--border, #202020);
+    padding: 80px 0 34px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 480px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(109, 74, 255, .10), transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+}
+
+.footer-top {
+    text-align: center;
+    position: relative;
+}
+
+.footer-top h2 {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+
+.footer-top h2 span {
+    color: var(--accent, #8B5CF6);
+}
+
+.footer-top > p {
+    color: var(--text-muted, #8E8E98);
+    max-width: 460px;
+    margin: 0 auto 30px;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.footer-social a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg, rgba(255,255,255,.035));
+    border: 1px solid var(--glass-border, rgba(255,255,255,.09));
+    border-radius: var(--radius-md, 14px);
+    font-size: 1.2rem;
+    transition: transform var(--dur-base, .4s) var(--ease-spring, ease),
+                background var(--dur-base, .4s) ease,
+                border-color var(--dur-base, .4s) ease;
+}
+
+.footer-social a:hover {
+    background: var(--accent, #8B5CF6);
+    border-color: var(--accent, #8B5CF6);
+    transform: translateY(-6px) scale(1.06);
+    box-shadow: var(--glow-md, 0 0 28px rgba(139,92,246,.3));
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 26px;
+    border-top: 1px solid #1a1a1a;
+    text-align: center;
+    color: var(--text-muted, #777);
+    font-size: .88rem;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+
+    .footer {
+        padding: 60px 0 26px;
+    }
+
+}
