@@ -1,43 +1,53 @@
 """
 Flask app for the portfolio.
 
-Contact-form emails are sent from the backend via Gmail SMTP.
-To make it actually deliver mail, create a file named `.env`
-next to this file (it is NOT included, and should never be
-committed) containing:
+Contact-form emails are sent from the backend via the Resend
+HTTP API (https://resend.com) instead of raw SMTP.
 
-    EMAIL_USER=your.gmail.address@gmail.com
-    EMAIL_PASS=your16characterapppassword
+Why: most free-tier hosts (Render included, since Sept 2025)
+block outbound SMTP ports (25/465/587) to stop free accounts
+being used for spam. Resend's API runs over normal HTTPS
+(port 443), which isn't blocked, so this works on Render's
+free tier without upgrading.
 
-EMAIL_PASS must be a Gmail "App Password", not your normal
-Gmail password (Google Account -> Security -> 2-Step
-Verification -> App passwords). Regular passwords are
-rejected by Gmail's SMTP server.
+Setup:
+1. Sign up at https://resend.com using shaikfaisel129@gmail.com
+   (the same address messages should land in).
+2. Dashboard -> API Keys -> Create API Key -> copy it.
+3. Locally: put it in a `.env` file next to this script:
+       RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   On Render: Dashboard -> your service -> Environment ->
+   Add Environment Variable -> key RESEND_API_KEY.
+4. Without a verified custom domain, Resend only allows
+   sending FROM its shared onboarding@resend.dev address TO
+   the email you signed up with -- which is exactly this
+   contact form's use case, so no domain setup is required.
 
-Until EMAIL_USER / EMAIL_PASS are set, /send-message will
-respond with a clear "not configured yet" error instead of
-crashing, so the rest of the site keeps working.
+Until RESEND_API_KEY is set, /send-message responds with a
+clear "not configured yet" error instead of crashing, so the
+rest of the site keeps working.
 """
 
 import os
-import smtplib
-from email.mime.text import MIMEText
 
+import requests
 from flask import Flask, jsonify, render_template, request
 
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
-    # python-dotenv is optional -- if it isn't installed,
-    # EMAIL_USER / EMAIL_PASS can still be set as real
-    # environment variables instead of a .env file.
+    # python-dotenv is optional -- RESEND_API_KEY can also be
+    # set as a real environment variable instead of a .env file.
     pass
 
 app = Flask(__name__)
 
 # Where contact-form messages are delivered.
 RECEIVER_EMAIL = "shaikfaisel129@gmail.com"
+
+RESEND_API_URL = "https://api.resend.com/emails"
+RESEND_FROM = "Portfolio Contact <onboarding@resend.dev>"
 
 
 @app.route("/")
@@ -61,11 +71,10 @@ def send_message():
     if "@" not in email or "." not in email.split("@")[-1]:
         return jsonify(success=False, error="Please enter a valid email address."), 400
 
-    sender = os.environ.get("EMAIL_USER")
-    app_password = os.environ.get("EMAIL_PASS")
+    api_key = os.environ.get("RESEND_API_KEY")
 
-    if not sender or not app_password:
-        app.logger.warning("EMAIL_USER / EMAIL_PASS not set -- contact form cannot send mail yet.")
+    if not api_key:
+        app.logger.warning("RESEND_API_KEY not set -- contact form cannot send mail yet.")
         return jsonify(
             success=False,
             error="The contact form isn't fully set up yet -- please email me directly for now."
@@ -79,18 +88,31 @@ def send_message():
         f"{message}"
     )
 
-    msg = MIMEText(body)
-    msg["Subject"] = f"Portfolio contact: {subject}"
-    msg["From"] = sender
-    msg["To"] = RECEIVER_EMAIL
-    msg["Reply-To"] = email
-
     try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=10) as server:
-            server.login(sender, app_password)
-            server.sendmail(sender, [RECEIVER_EMAIL], msg.as_string())
-    except Exception as exc:
-        app.logger.error("Failed to send contact-form email: %s", exc)
+        resp = requests.post(
+            RESEND_API_URL,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "from": RESEND_FROM,
+                "to": [RECEIVER_EMAIL],
+                "reply_to": email,
+                "subject": f"Portfolio contact: {subject}",
+                "text": body,
+            },
+            timeout=10,
+        )
+    except requests.RequestException as exc:
+        app.logger.error("Resend request failed: %s", exc)
+        return jsonify(
+            success=False,
+            error="Couldn't send your message right now -- please try again shortly or email me directly."
+        ), 500
+
+    if resp.status_code >= 400:
+        app.logger.error("Resend API error %s: %s", resp.status_code, resp.text)
         return jsonify(
             success=False,
             error="Couldn't send your message right now -- please try again shortly or email me directly."
