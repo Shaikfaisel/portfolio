@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resume: {
             label: "Resume",
             reply: "Opening his resume in a new tab now.",
-            action: () => window.open("/static/resume.pdf", "_blank")
+            action: () => window.open("/static/resume1.pdf", "_blank")
         },
 
         contact: {
