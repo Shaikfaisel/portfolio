@@ -164,6 +164,6 @@ portfolio.
 
 <div align="center">
 
-Built with Flask & ❤️ by **Shaik Faisel**
+Built with Flask & ❤️ by **Shaik Faisel Ahmed**
 
 </div>
